@@ -35,6 +35,7 @@ public class ExtentManager {
             extentSparkReporter.config().setTheme(Theme.DARK);
 
             extentReports = new ExtentReports();
+            extentReports.attachReporter(extentSparkReporter);
             // adding system information
             extentReports.setSystemInfo("Operating System", System.getProperty("os.name"));
             extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));

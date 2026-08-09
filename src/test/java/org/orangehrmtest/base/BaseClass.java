@@ -26,6 +26,7 @@ public class BaseClass {
     public WebDriver getDriver() {
         return driver;
     }
+
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
@@ -58,19 +59,25 @@ public class BaseClass {
     protected void launchBrowser() {
         // Initialize the WebDriver based on browser defined in config.properties
         String browser = properties.getProperty("browser");
-        switch(browser) {
-            case "chrome" : driver = new ChromeDriver();
-            log.info("Chrome instance is created!");
-            break;
-            case "firefox" : driver = new FirefoxDriver();
-            log.info("Firefox browser instance is created!");
-            break;
-            case "edge" : driver = new EdgeDriver();
-            log.info("Edge browser instance is created!");
-            break;
+        switch (browser) {
+            case "chrome":
+                driver = new ChromeDriver();
+                ExtentManager.registerDriver(getDriver());
+                log.info("Chrome instance is created!");
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+                ExtentManager.registerDriver(getDriver());
+                log.info("Firefox browser instance is created!");
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                ExtentManager.registerDriver(getDriver());
+                log.info("Edge browser instance is created!");
+                break;
             default:
                 log.warn("Unsupported Browser: {}", browser);
-                throw new IllegalArgumentException("Unsupported Browser: "+browser);
+                throw new IllegalArgumentException("Unsupported Browser: " + browser);
         }
     }
 
@@ -84,8 +91,10 @@ public class BaseClass {
 
     @AfterMethod
     public void tearDown() {
-        if(driver != null) {
+        if (driver != null) {
             driver.quit();
         }
+        log.info("WebDriver instance is closed");
+        ExtentManager.endTest();
     }
 }
