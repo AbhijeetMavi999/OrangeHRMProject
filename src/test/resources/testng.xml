@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="OrangeHRMSuite">
+    <test name="OrangeHRMTest">
+        <classes>
+<!--            <class name="org.orangehrmtest.testcases.DummyTest"/>-->
+<!--            <class name="org.orangehrmtest.testcases.DummyTest2"/>-->
+            <class name="org.orangehrmtest.testcases.LoginPageTest"/>
+        </classes>
+    </test>
+
+    <!-- Example of a second test block -->
+    <!--
+    <test name="OrangeHRMTest2">
+        <classes>
+            <class name="org.orangehrmtest.testcases.DummyTest"/>
+            <class name="org.orangehrmtest.testcases.DummyTest2"/>
+        </classes>
+    </test>
+    -->
+</suite>
